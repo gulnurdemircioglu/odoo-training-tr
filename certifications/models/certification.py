@@ -20,10 +20,10 @@ class Certification(models.Model):
         ('available', "Available")
     ], readonly=True, compute='_compute_expiry_days', store=True)
 
-    # @api.constrains('entity_id')
-    # def _check_entity_id(self):
-    #     if self.entity_id and self.entity_id.is_certification_body == False:
-    #         raise ValidationError('It is not a certification entity')
+    @api.constrains('entity_id')
+    def _check_entity_id(self):
+        if self.entity_id and self.entity_id.is_certification_body == False:
+            raise ValidationError('It is not a certification entity')
 
     @api.depends('date')
     def _compute_expiry_days(self):

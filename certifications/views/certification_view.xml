@@ -31,7 +31,7 @@
                                     type="object"/>
 
                             <field name="standard_id"/>
-<!--                            <field name="entity_id" domain="[('is_certification_body','=','True')]"/>-->
+                            <field name="entity_id" domain="[('is_certification_body','=','True')]"/>
                             <field name="owner_id"/>
                             <field name="expiry_days"/>
                             <field name="expiry_status"/>
