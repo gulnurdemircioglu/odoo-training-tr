@@ -2,7 +2,8 @@ from odoo import api, fields, models
 from odoo.odoo.exceptions import ValidationError
 from datetime import timedelta
 
-class Certification (models.Model):
+
+class Certification(models.Model):
     _name = 'certification'
     _description = "Certification"
 
@@ -12,7 +13,6 @@ class Certification (models.Model):
     standard_id = fields.Many2one("certification.standard")
     owner_id = fields.Many2one("res.partner")
     entity_id = fields.Many2one("res.partner")
-
 
     expiry_days = fields.Integer('Expiry Days', readonly=True, compute='_compute_expiry_days')
     expiry_status = fields.Selection([
@@ -39,4 +39,3 @@ class Certification (models.Model):
         self.ensure_one()
         if self.date:
             self.write({'date': self.date + timedelta(days=30)})
-

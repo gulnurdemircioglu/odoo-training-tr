@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <record id="employee_window" model="ir.actions.act_window">
+            <field name="name">Employee Info</field>
+            <field name="res_model">employee.info</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="employee_view" model="ir.ui.view">
+            <field name="name">Employee</field>
+            <field name="model">employee.info</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Informations Detail">
+                    <field name="employees_name"/>
+                    <field name="types"/>
+                    <field name="identification_number"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="employee_form" model="ir.ui.view">
+            <field name="name">Employee Form</field>
+            <field name="model">employee.info</field>
+            <field name="arch" type="xml">
+                <form string="Certification">
+                    <sheet>
+                        <group>
+                            <field name="employees_name"/>
+                            <field name="identification_number"/>
+                             <field name="types" attrs="{'visible': [('types','in', ['passport', 'id_card','driving_license'])]}"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem
+                name="Employee Information"
+                id="employee_menu"
+                sequence="2"
+                action="employee_window"/>
+
+    </data>
+</odoo>
