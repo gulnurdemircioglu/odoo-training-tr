@@ -35,8 +35,6 @@
                             <field name="owner_id"/>
                             <field name="expiry_days"/>
                             <field name="expiry_status"/>
-                            <field name="owner_id"/>
-                            <button name="update_date_one_month" string="update date 1 month" type="object"/>
 
 
                         </group>
@@ -45,41 +43,44 @@
             </field>
         </record>
 
-        <record id="certification" model="ir.actions.act_window">
+        <record id="certification_action" model="ir.actions.act_window">
             <field name="name">Certification</field>
             <field name="res_model">certification</field>
             <field name="view_mode">tree,form</field>
         </record>
 
+
+        <record id="certification_bodies_view_list" model="ir.ui.view">
+            <field name="name">Certification Bodies</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Certification Bodies">
+                    <field name="name"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_certification_bodies" model="ir.actions.act_window">
+            <field name="name">Certification Bodies</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('is_certification_body', '=', True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
         <menuitem
                 name="Certification"
                 id="certification_menu"
                 sequence="5"
-                action="certification"/>
+                action="certification_action"/>
 
-<!--        <record id="certification_bodies_view_list" model="ir.ui.view">-->
-<!--            <field name="name">Certification Bodies</field>-->
-<!--            <field name="model">res.partner</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <tree string="Certification Bodies">-->
-<!--                    <field name="name"/>-->
-<!--                    <field name="phone"/>-->
-<!--                </tree>-->
-<!--            </field>-->
-<!--        </record>-->
-
-<!--        <record id="action_certification_bodies" model="ir.actions.act_window">-->
-<!--            <field name="name">Certification Bodies</field>-->
-<!--            <field name="res_model">res.partner</field>-->
-<!--            <field name="domain">[('is_certification_body', '=', True)]</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--        </record>-->
-
-<!--        <menuitem-->
-<!--                id="certification.bodies"-->
-<!--                parent="certification_menu"-->
-<!--                sequence="5"-->
-<!--                action="action_certification_bodies"/>-->
+        <menuitem
+                name="Certification Body"
+                id="certification_action_menu"
+                parent="certification_menu"
+                sequence="5"
+                action="action_certification_bodies"/>
 
     </data>
 </odoo>

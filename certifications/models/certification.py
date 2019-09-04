@@ -1,5 +1,6 @@
-from odoo import api, fields, models
-from odoo.odoo.exceptions import ValidationError
+from odoo import api, fields, models, exceptions
+#from exceptions import ValidationError
+
 from datetime import timedelta
 
 
@@ -23,16 +24,17 @@ class Certification(models.Model):
     @api.constrains('entity_id')
     def _check_entity_id(self):
         if self.entity_id and self.entity_id.is_certification_body == False:
-            raise ValidationError('It is not a certification entity')
+            raise exceptions.ValidationError('It is not a certification entity')
 
     @api.depends('date')
     def _compute_expiry_days(self):
-        if self.date:
-            self.expiry_days = (self.date - fields.Date.today()).days
-            if self.expiry_days > 0:
-                self.expiry_status = 'available'
-            else:
-                self.expiry_status = 'expired'
+        for certificate in self:
+            if certificate.date:
+                certificate.expiry_days = (certificate.date - fields.Date.today()).days
+                if certificate.expiry_days > 0:
+                    certificate.expiry_status = 'available'
+                else:
+                    certificate.expiry_status = 'expired'
 
     @api.multi
     def update_date_one_month(self):

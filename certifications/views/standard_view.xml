@@ -36,7 +36,7 @@
         </record>
 
         <menuitem
-                id="Standard"
+                id="standard_menu"
                 parent="certification_menu"
                 sequence="5"
                 action="open_standard"/>

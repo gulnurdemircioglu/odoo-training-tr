@@ -28,6 +28,7 @@
                     <sheet>
                         <group>
                             <field name="employees_name"/>
+                            <field name="work_phone" readonly="1"/>
                             <field name="identification_number"/>
                              <field name="types" attrs="{'visible': [('types','in', ['passport', 'id_card','driving_license'])]}"/>
 

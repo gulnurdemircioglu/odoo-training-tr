@@ -7,14 +7,15 @@
     "author": "Gulnur,"
               "Gulsum,"
               "Eda "
-              ,
+    ,
     "category": "Employee Information",
-    "depends": ['base','hr'],
+    "depends": ['base', 'hr'],
     "data": [
         'security/ir.model.access.csv',
         'views/employee_view.xml'
 
     ],
-    'development_status':'Beta',
-    'maintainers':['ceeficent']
+    'demo': ['data/employee_info_data.xml'],
+    'development_status': 'Beta',
+    'maintainers': ['ceeficent']
 }

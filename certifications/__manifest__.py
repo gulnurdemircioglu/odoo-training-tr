@@ -4,17 +4,22 @@
     "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "website": "https://github.com/gulnurdemircioglu",
-    "author": "Gulnur "
-              ,
+    "author": "Gulnur ",
     "category": "Certification Management",
     "depends": ['base'],
     "data": [
+        'security/certification_security.xml',
         'security/ir.model.access.csv',
         'views/certification_view.xml',
         'views/standard_view.xml',
-        'views/res_partner_view.xml'
-
+        'views/res_partner_view.xml',
+        'reports/certification_report.xml',
+        'reports/certification_template_pdf.xml',
+        'reports/report_certification_pdf.xml',
     ],
-    'development_status':'Beta',
-    'maintainers':['ceeficent']
+    'demo': ['data/certification_data.xml'],
+    'development_status': 'Beta',
+    'maintainers': ['ceeficent'],
+    'installable' : 'TRUE',
+    'application' : 'TRUE'
 }
