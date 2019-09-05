@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="equipment_menu_action" model="ir.actions.act_window">
+            <field name="name">Request</field>
+            <field name="res_model">assignment.tool</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('user_name','=',uid)]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">You have not any equipment
+                </p>
+            </field>
+        </record>
+
+
+        <record id="equipment_request_form" model="ir.ui.view">
+            <field name="name">assignment_tool.form</field>
+            <field name="model">assignment.tool</field>
+            <field name="arch" type="xml">
+
+
+                <form string="Equipment Form">
+                    <group>
+                        <field name="user_name"/>
+                        <field name="obj_type"
+                               attrs="{'visible': [('obj_type','in', ['computer', 'screen','keyboard_mouse','network_computer','telephone','printer'])]}"/>
+                        <field name="date"/>
+                    </group>
+
+
+                </form>
+            </field>
+        </record>
+
+        <record id="equipment_vt_tree" model="ir.ui.view">
+            <field name="name">assignment_tool.tree</field>
+            <field name="model">assignment.tool</field>
+            <field name="arch" type="xml">
+
+                <tree string="EQUIPMENT LIST">
+                    <field name="obj_type"/>
+                    <field name="date"/>
+                    <field name="assignment_status"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <menuitem id="equipment_menu"
+                  name="Equipment"
+                  action="equipment_menu_action"/>
+        <menuitem id="manager_menu"
+              	parent="equipment_menu"
+              	name="equipment_manager"
+              	action="management_menu_action"/>
+
+
+    </data>
+</odoo>
